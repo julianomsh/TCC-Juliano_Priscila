@@ -1,15 +1,19 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
+
 import { Container, Title, ButtonMenu } from "./styles";
 
-import Icon from 'react-native-vector-icons/Feather'
+import { Entypo } from '@expo/vector-icons';
 
 export default function Header({ title }) {
+    const navigation = useNavigation();
 
     return (
         <Container>
-            <ButtonMenu>
-            <Icon nome="menu" size={35} color="#121212"/>
+            <ButtonMenu onPress={() => navigation.openDrawer()}>
+                <Entypo name="menu" size={24} color="black" />
             </ButtonMenu>
+
             {title && (
                 <Title>
                     {title}

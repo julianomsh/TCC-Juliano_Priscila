@@ -107,7 +107,6 @@ function AuthProvider({ children }) {
         .then(() => {
             setUser(null);
         })
-
     }
 
     /* -------------------------------------------*/

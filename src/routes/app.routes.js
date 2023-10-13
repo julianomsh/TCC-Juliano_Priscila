@@ -3,6 +3,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Home from '../pages/Home'
 
+import Profile from '../pages/Profile'
+
 const AppDrawer = createDrawerNavigator();
 
 function AppRoutes() {
@@ -28,6 +30,10 @@ function AppRoutes() {
             <AppDrawer.Screen
                 name="Home"
                 component={Home}
+            />
+            <AppDrawer.Screen 
+                name="Perfil"
+                component={Profile}
             />
         </AppDrawer.Navigator>
     )

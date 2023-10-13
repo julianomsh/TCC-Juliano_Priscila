@@ -20,7 +20,6 @@ export default function SignIn() {
 
     function handleLogin() {
         signIn(email, password);
-
     }
 
     return (
