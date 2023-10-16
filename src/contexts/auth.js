@@ -55,7 +55,7 @@ function AuthProvider({ children }) {
             navigation.goBack();
 
         } catch (err) {
-            console.log("ERRO AO CADASTRAR", err);
+            console.log("ERRO AO CADASTRAR", err); //colocar o alert
             setLoadingAuth(false);
         }
     }
