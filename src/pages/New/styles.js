@@ -15,6 +15,9 @@ export const Input = styled.TextInput`
     border-radius: 4px;
 `;
 
+
+
+
 export const SubmitButton = styled.TouchableOpacity`
     width: 90%;
     height: 50px;

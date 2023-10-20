@@ -24,7 +24,7 @@ export default function RegisterTypes({ type, sendTypeChanged }){
                 onPress={ () => changeType('receita')}
                 >
 
-                <Feather name="arrow-up" size={25} color="#121212" />
+                <Feather name="arrow-up" size={25} color="#00FF00" />
                 <RegisterLabel>
                     Receita
                 </RegisterLabel>
@@ -34,7 +34,7 @@ export default function RegisterTypes({ type, sendTypeChanged }){
                 checked={ typeChecked === 'despesa' ? true : false}
                 onPress={ () => changeType('despesa')}
             >
-                <Feather name="arrow-down" size={25} color="#121212" />
+                <Feather name="arrow-down" size={25} color="#FF0000" />
                 <RegisterLabel>
                     Despesa
                 </RegisterLabel>

@@ -5,6 +5,8 @@ import api from "../services/api";
 import { useNavigation } from "@react-navigation/native";
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Alert } from "react-native";
+
 
 export const AuthContext = createContext({})
 
@@ -54,8 +56,8 @@ function AuthProvider({ children }) {
             setLoadingAuth(false);
             navigation.goBack();
 
-        } catch (err) {
-            console.log("ERRO AO CADASTRAR", err); //colocar o alert
+        } catch (error) {
+            Alert.alert("ERRO AO CADASTRAR", error); //colocar o alert
             setLoadingAuth(false);
         }
     }
@@ -93,8 +95,8 @@ function AuthProvider({ children }) {
 
             setLoadingAuth(false);
 
-        } catch (err) {
-            console.log("ERRO AO LOGAR", err)
+        } catch (error) {
+            Alert.alert('Erro', 'Email ou senha incorreto')
             setLoadingAuth(false);
         }
     }

@@ -1,14 +1,15 @@
-import React, { useContext, useState } from "react";
-import { View, Text } from 'react-native';
-import { Platform, ActivityIndicator } from 'react-native';
+import React, { useContext, useState, useRef } from "react";
+import { Platform, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
 
 import {
-    Background, Container,
-    Logo, AreaInput, Input,
-    SubmitButton, SubmitText,
+    Background, ContainerSingUp,
+    LogoSingUp, AreaInput, Input,
+    SubmitButton, SubmitText, AreaInput2, Icon
 } from '../SignIn/styles'
 
 import { AuthContext } from "../../contexts/auth";
+
+import { Ionicons } from '@expo/vector-icons'
 
 export default function SignUp() {
 
@@ -16,20 +17,41 @@ export default function SignUp() {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
+    const [Visupassword, setVisupassword] = useState(true);
+    const segundoInputRef = useRef(null);
+    const terceiroInputRef = useRef(null);
+    const quartoInputRef = useRef(null);
+
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
 
     function handleSignUp() {
-        if(nome == '' || email == '' || password == '')
-        return;
-        
+        if (nome == '' || email == '' || password == '' || password2 == '') {
+            Alert.alert('Preencha todos os campos')
+            return
+        }
+        else if (!validateEmail(email)) {
+            Alert.alert('E-mail inválido');
+            return;
+        }
+        else if (password != password2) {
+            Alert.alert('Senhas não são iguais')
+            return
+        }
+
         signUp(email, password, nome);
     }
     return (
         <Background>
-            <Container
+            <ContainerSingUp
                 behavior={Platform.OS === 'ios' ? 'padding' : ''}
                 enabled
             >
-                <Logo
+                <LogoSingUp
                     source={require('../../assets/LogoTcc.png')}
                 />
                 <AreaInput>
@@ -37,6 +59,10 @@ export default function SignUp() {
                         placeholder="Nome"
                         value={nome}
                         onChangeText={(text) => setNome(text)}
+                        returnKeyType="next"
+                        onSubmitEditing={() => {
+                            segundoInputRef.current.focus(); // Quando o "Next" for pressionado, o segundo input receberá o foco
+                        }}
                     />
                 </AreaInput>
                 <AreaInput>
@@ -44,17 +70,56 @@ export default function SignUp() {
                         placeholder="Email"
                         value={email}
                         onChangeText={(text) => setEmail(text)}
+                        ref={segundoInputRef}
+                        returnKeyType="next"
+                        onSubmitEditing={() => {
+                            terceiroInputRef.current.focus(); // Quando o "Next" for pressionado, o segundo input receberá o foco
+                        }}
                     />
                 </AreaInput>
 
-                <AreaInput>
+                <AreaInput2>
                     <Input
                         placeholder="Senha"
                         value={password}
                         onChangeText={(text) => setPassword(text)}
-                        secureTextEntry={true}
+                        secureTextEntry={Visupassword}
+                        ref={terceiroInputRef}
+                        returnKeyType="next"
+                        onSubmitEditing={() => {
+                            quartoInputRef.current.focus(); // Quando o "Next" for pressionado, o segundo input receberá o foco
+                        }}
+
                     />
-                </AreaInput>
+                    <Icon>
+                        <TouchableOpacity onPress={() => setVisupassword(!Visupassword)}>
+                            {
+                                Visupassword ?
+                                    <Ionicons name="eye" color="black" size={25} /> : <Ionicons name="eye-off" color="black" size={25} />
+                            }
+                        </TouchableOpacity>
+                    </Icon>
+                </AreaInput2>
+
+                <AreaInput2>
+                    <Input
+                        placeholder="Repita a Senha"
+                        onChangeText={() => setPassword2()}
+                        value={password2}
+                        secureTextEntry={Visupassword}
+                        ref={quartoInputRef} // Atribua a referência ao segundo input
+                        returnKeyType="done" // Você pode definir o returnKeyType como "done" para o último input
+                    
+                    />
+                    <Icon>
+                        <TouchableOpacity onPress={() => setVisupassword(!Visupassword)}>
+                            {
+                                Visupassword ?
+                                    <Ionicons name="eye" color="black" size={25} /> : <Ionicons name="eye-off" color="black" size={25} />
+                            }
+                        </TouchableOpacity>
+                    </Icon>
+                </AreaInput2>
 
                 <SubmitButton onPress={handleSignUp} activeOpacity={0.7} >
                     {
@@ -68,7 +133,7 @@ export default function SignUp() {
 
                 </SubmitButton>
 
-            </Container>
+            </ContainerSingUp>
         </Background>
 
     )

@@ -10,26 +10,64 @@ export const Container = styled.KeyboardAvoidingView`
 flex:1;
 align-items:center;
 justify-content: center;
+
+`;
+
+export const ContainerSingUp = styled.KeyboardAvoidingView`
+flex:1;
+align-items:center;
+justify-content: center;
+
 `;
 
 export const Logo = styled.Image`
 margin-bottom: 25px;
+`;
 
+export const LogoSingUp = styled.Image`
+margin-bottom: 10px;
+`;
+
+export const AreaInput1 = styled.View`
+flex-direction: row;
+width: 90%;
+background-color: #F4F6F5;
+border-radius:10px;
+align-items: center;
+`;
+
+export const AreaInput2 = styled.View`
+flex-direction: row;
+width: 90%;
+background-color: #F4F6F5;
+border-radius:10px;
+margin-top: 15px;
+align-items: center;
 `;
 
 export const AreaInput = styled.View`
 flex-direction: row;
+width: 90%;
+background-color: #F4F6F5;
+border-radius:10px;
+margin-top: 15px;
+align-items: center;
 `;
+
+
+
 
 export const Input = styled.TextInput`
 background-color: #F4F6F5;
-width: 90%;
+width: 85%;
 font-size: 17px;
-padding: 10px;
+padding: 5px;
 border-radius: 8px;
 color: #121212;
-margin-bottom: 15px;
-
+margin-bottom: 10px;
+align-items: center;
+margin-top: 5px;
+margin-left: 10px;
 `;
 
 export const SubmitButton = styled.TouchableOpacity`
@@ -58,3 +96,16 @@ margin-bottom: 10px;
 export const LinkText = styled.Text`
 font-weight: bold
 `;
+
+
+export const Icon = styled.TouchableOpacity`
+align-items: center;
+background-color: #F4F6F5;
+font-size: 17px;
+padding: 6px;
+border-radius: 8px;
+color: #121212;
+
+`;
+
+

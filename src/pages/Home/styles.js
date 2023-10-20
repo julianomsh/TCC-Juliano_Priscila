@@ -1,9 +1,5 @@
 import styled from "styled-components/native";
 
-//<<<<<<< HEAD
-//IOS não ficar por cima da barra de cima 
-//export const Background = styled.SafeAreaView`
-
 export const ContainerDateTime = styled.Text`
     color: black;
     font-size:15px;
@@ -30,7 +26,6 @@ font-weight: bold;
 padding: 10px;
 margin-left: 10px;
 
-
 `;
 export const Label = styled.Text`
 color: black;
@@ -41,20 +36,22 @@ margin-left: 10px;
 `;
 
 export const Area = styled.View`
+margin-top: 22px;
 background-color: #FFF;
 border-top-left-radius: 15px;
 border-top-right-radius: 15px;
 flex-direction: row;
 padding-left: 14px;
 padding-right: 14px;
+padding-top: 14px;
 align-items: baseline;
 `;
 
 export const Title = styled.Text`
 margin-left: 4px;
-color:#121212;
-margin-bottom: 15px;
-font-weight: bold ;
+color: #121212;
+margin-bottom: 14px;
+font-weight: bold;
 font-size: 18px;
 `;
 

@@ -1,6 +1,6 @@
 import React , {useMemo} from "react";
 import { Container, Conteiner2, Label, Balance} from './styles'
-import { Octicons } from '@expo/vector-icons';
+
 
 
 export default function BalanceItem({ data }) {
