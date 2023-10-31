@@ -42,9 +42,9 @@ export default function SignUp() {
             Alert.alert('Senhas não são iguais')
             return
         }
-
         signUp(email, password, nome);
     }
+
     return (
         <Background>
             <ContainerSingUp
@@ -104,7 +104,7 @@ export default function SignUp() {
                 <AreaInput2>
                     <Input
                         placeholder="Repita a Senha"
-                        onChangeText={() => setPassword2()}
+                        onChangeText={(text) => setPassword2(text)}
                         value={password2}
                         secureTextEntry={Visupassword}
                         ref={quartoInputRef} // Atribua a referência ao segundo input

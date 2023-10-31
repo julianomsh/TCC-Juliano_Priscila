@@ -23,7 +23,7 @@ export default function SignIn() {
     const [password, setPassword] = useState('');
     const [Visupassword, setVisupassword] = useState(true);
     const segundoInputRef = useRef(null);
-    
+
     function handleLogin() {
         if (email == '' || password == '') {
             Alert.alert('Preencha todos os campos')

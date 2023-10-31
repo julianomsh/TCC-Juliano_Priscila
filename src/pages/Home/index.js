@@ -8,10 +8,7 @@ import {
   ListBalance,
   Area,
   Title,
-  List,
-  ContainerDateTime,
-  Label,
-  LabelData
+  List
  } from './styles'; 
 
 import api from '../../services/api'
@@ -28,14 +25,16 @@ export default function Home(){
   const [movements, setMovements] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [dateMovements, setDateMovements] = useState(new Date());
-  const today = new Date();
-  const formattedDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+  
   useEffect(()=>{
     let isActive = true;
 
     async function getMovements(){
-      let dateFormated = format(dateMovements, 'dd/MM/yyyy');
-
+      let date = new Date(dateMovements)
+      //diferença entre os minutos do celular e o local universal UTC, sem o timezone
+      let onlyDate = date.valueOf() + date.getTimezoneOffset() * 60 * 1000; 
+      let dateFormated = format(onlyDate, 'dd/MM/yyyy');
+  
       const receives = await api.get('/receives', {
         params:{
           date: dateFormated 
@@ -58,7 +57,7 @@ export default function Home(){
 
     return () => isActive = false;
 
-  }, [isFocused, dateMovements])
+  }, [isFocused, dateMovements]) //array de dependencias
 
   async function handleDelete(id){
     try {
@@ -75,13 +74,14 @@ export default function Home(){
     }
   }
 
+  function filterDateMovements(dateSelected){
+    setDateMovements(dateSelected);
+  }
+
   return(
     <Background>
       <Header title="Minhas movimentações" />
-      <ContainerDateTime>
-                <Label>Data: </Label>
-                <LabelData>{formattedDate}</LabelData>
-            </ContainerDateTime>
+
       <ListBalance
         data={listBalance}
         horizontal={true}
@@ -108,6 +108,7 @@ export default function Home(){
       <Modal visible={modalVisible} animationType="fade" transparent={true}>
         <CalendarModal 
           setVisible={ () => setModalVisible(false) }
+          handleFilter={filterDateMovements}
         />
       </Modal>
 

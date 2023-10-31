@@ -24,7 +24,7 @@ function AuthProvider({ children }) {
             const storageUser = await AsyncStorage.getItem('@fimToken')
 
             if (storageUser) {
-                const response = await api.get('/me', {
+               const response = await api.get('/me', {
                     headers: {
                         'Authorization': `Bearer ${storageUser}`
                     }
@@ -74,7 +74,7 @@ function AuthProvider({ children }) {
                 password: password
             })
 
-            const { id, name, token } = response.data;
+            const { id, name, token } = response.data; 
 
             const data = {
                 id,
@@ -99,6 +99,7 @@ function AuthProvider({ children }) {
             Alert.alert('Erro', 'Email ou senha incorreto')
             setLoadingAuth(false);
         }
+        
     }
     /* -------------------------------------------*/
 
