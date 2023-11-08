@@ -85,6 +85,10 @@ export default function SignIn() {
                     }
                 </SubmitButton>
 
+                <Link onPress={() => navigation.navigate('RedPassword')}>
+                    <LinkText>Esqueceu sua Senha?</LinkText>
+                </Link>
+
                 <Link onPress={() => navigation.navigate('SignUp')}>
                     <LinkText>Criar uma Conta?</LinkText>
                 </Link>

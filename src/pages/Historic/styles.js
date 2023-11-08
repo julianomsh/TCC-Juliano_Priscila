@@ -6,7 +6,7 @@ export const ContainerDateTime = styled.Text`
     font-weight: bold;
     padding: 10px;
     margin-left: 10px;
-    width: 250px;
+    width: 400px;
     align-items: flex-end;
 `;
 
@@ -16,7 +16,7 @@ background-color: #F0F4FF;
 `;
 
 export const ListBalance = styled.FlatList`
-max-height: 160px;
+max-height: 35px;
 
 `;
 export const LabelData = styled.Text`
@@ -25,10 +25,8 @@ font-size:15px;
 font-weight: bold;
 padding: 10px;
 margin-left: 10px;
-margin-top: 10px;
 
 `;
-
 export const Label = styled.Text`
 color: black;
 font-size:15px;
@@ -50,7 +48,7 @@ align-items: baseline;
 `;
 
 export const Title = styled.Text`
-margin-left: 4px;
+margin-left: 5px;
 color: #121212;
 margin-bottom: 14px;
 font-weight: bold;
@@ -60,12 +58,4 @@ font-size: 18px;
 export const List = styled.FlatList`
 flex: 1;
 background-color: #FFF;
-`;
-
-export const Text = styled.Text`
-margin-left: 20px;
-margin-top: 10px;
-color: #121212;
-font-weight: bold;
-font-size: 18px;
 `;

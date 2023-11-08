@@ -15,8 +15,8 @@ import {
 import api from '../../services/api'
 import { format } from 'date-fns';
 import { useIsFocused } from '@react-navigation/native';
-import BalanceItem from '../../components/BalanceItem';
-import HistoricoList from '../../components/HistoricoList';
+import BalanceItem from '../../components/BalanceItemHistoric';
+import HistoricoList from '../../components/Historic';
 import CalendarModal from '../../components/CalendarModal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import moment from 'moment';
@@ -37,7 +37,6 @@ export default function Home() {
       //diferença entre os minutos do celular e o local universal UTC, sem o timezone
       let onlyDate = date.valueOf() + date.getTimezoneOffset() * 60 * 1000;
       let dateFormated = format(onlyDate, 'dd/MM/yyyy');
-
 
       const receives = await api.get('/receives', {
         params: {
@@ -84,8 +83,7 @@ export default function Home() {
 
   return (
     <Background>
-
-      <Header title="Minhas movimentações" />
+      <Header title="Historico de Movimentações" />
 
       <ListBalance
         data={listBalance}
@@ -97,13 +95,11 @@ export default function Home() {
       <LabelData>
         Data {currentDate}
       </LabelData>
-
-
       <Area>
         <TouchableOpacity onPress={() => setModalVisible(true)}>
           <Icon name="event" color="#121212" size={30} />
         </TouchableOpacity>
-        <Title>Últimas movimentações</Title>
+        <Title>Movimentações</Title>
       </Area>
 
       <List

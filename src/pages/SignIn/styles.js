@@ -108,3 +108,10 @@ color: #121212;
 
 `;
 
+export const Text = styled.Text`
+font-size: 20px;
+color: #121212;
+font-weight: bold;
+margin-bottom: 10px;
+
+`;

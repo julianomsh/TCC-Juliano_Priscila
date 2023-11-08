@@ -31,8 +31,8 @@ export default function Profile() {
 
       <Textlabel >
       <Zocial name="email" size={35} color="black" />
-      <Textinfo >  Teste@gmail.com
-      </Textinfo>
+      <Name numberOflines={1}> {user && user.email}
+      </Name>
       </Textlabel>
 
       <Textlabel >

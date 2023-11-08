@@ -3,16 +3,11 @@ import styled from "styled-components/native";
 export const Container = styled.View`
     background-color:#FFF;
     margin-left:14px;
-    margin-right: 10px;
-    border-radius:6px;
-    align-items:flex-start;
-    width:350px;
 
 `;
 export const Conteiner2 = styled.View`
     background-color:#${props => props.bg};
     border-radius:6px;
-    width:350px;
 `;
 
 export const Label = styled.Text`

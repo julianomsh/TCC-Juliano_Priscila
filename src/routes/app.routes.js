@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from '../pages/Home';
 import New from '../pages/New';
 import Profile from '../pages/Profile';
+import Historic from '../pages/Historic';
 import CustomDrawer from "../components/CustomDrawer";
 
 const AppDrawer = createDrawerNavigator();
@@ -37,6 +38,10 @@ function AppRoutes() {
             <AppDrawer.Screen
                 name="Registrar"
                 component={New} />
+
+            <AppDrawer.Screen
+                name="Historico"
+                component={Historic} />
 
             <AppDrawer.Screen
                 name="Perfil"
