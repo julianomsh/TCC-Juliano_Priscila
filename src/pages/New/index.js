@@ -12,7 +12,7 @@ import {
 
 } from './styles';
 
-import { SafeAreaView, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import { SafeAreaView, TouchableWithoutFeedback, Keyboard, Alert, DatePickerIOS } from 'react-native';
 //Keyboard.dismiss() - esconder o teclado quando clicar fora 
 
 import Header from '../../components/Header';
@@ -34,25 +34,10 @@ export default function New() {
     const [valueObservation, setValueObservation] = useState('');
     const [type, setType] = useState('receita');
 
-    const itens = ["Fixa", "Variavel"]
-
-    function renderInputTipo() {
-        if (type !== 'receita') {
-            return (
-                <Input_tipo
-                    placeholder="Fixa/Variavel"
-                    value={valueAccount_type}
-                    onChangeText={(text) => setValueAccount_type(text)}
-                />
-            );
-        }
-        return null;
-    }
-
     function handleSubmit() {
         Keyboard.dismiss();
 
-        if (isNaN(parseFloat(valueInput)) || type === null || valueStatus == ''|| valueDate == '' || valueObservation == '') {
+        if (isNaN(parseFloat(valueInput)) || type === null  || valueDate == '') {
             alert('Preencha todos os campos!')
             return;
         }
@@ -135,13 +120,12 @@ export default function New() {
 
                     <ConteinerInput>
 
-                        <Input_status
-                            placeholder="Status"
-                            value={valueStatus}
-                            onChangeText={(text) => setValueStatus(text)}
+                        <Input_tipo
+                            placeholder="Fixa/Variavel"
+                            value={valueAccount_type}
+                            onChangeText={(text) => setValueAccount_type(text)}
                         />
 
-                        {renderInputTipo()}
                     </ConteinerInput>
 
                     <InputObservacao

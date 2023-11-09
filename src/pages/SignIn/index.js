@@ -60,6 +60,8 @@ export default function SignIn() {
                         placeholder="Senha"
                         value={password}
                         onChangeText={(text) => setPassword(text)}
+                        maxLength={8}
+                        minLength={8}
                         secureTextEntry={Visupassword}
                         ref={segundoInputRef} // Atribua a referência ao segundo input
                         returnKeyType="done" // Você pode definir o returnKeyType como "done" para o último input

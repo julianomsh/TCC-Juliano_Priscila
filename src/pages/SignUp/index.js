@@ -84,6 +84,7 @@ export default function SignUp() {
                         value={password}
                         onChangeText={(text) => setPassword(text)}
                         secureTextEntry={Visupassword}
+                        maxLength={8}
                         ref={terceiroInputRef}
                         returnKeyType="next"
                         onSubmitEditing={() => {
@@ -106,6 +107,7 @@ export default function SignUp() {
                         placeholder="Repita a Senha"
                         onChangeText={(text) => setPassword2(text)}
                         value={password2}
+                        maxLength={8}
                         secureTextEntry={Visupassword}
                         ref={quartoInputRef} // Atribua a referência ao segundo input
                         returnKeyType="done" // Você pode definir o returnKeyType como "done" para o último input

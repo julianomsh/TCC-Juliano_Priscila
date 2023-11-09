@@ -33,8 +33,7 @@ function AuthProvider({ children }) {
                         setUser(null);
                     })
                 api.defaults.headers['Authorization'] = `Bearer ${storageUser}`;
-                setUser(response.data);
-                setLoading(false);
+                setUser(null);
             }
 
             setLoading(false)
