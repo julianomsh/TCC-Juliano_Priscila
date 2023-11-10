@@ -27,7 +27,6 @@ export const Input = styled.TextInput`
 `;
 
 export const Input_tipo = styled.TextInput`
-  margin-left: 8px;
     height: 50px;
     width: 50%;
     background-color: #FFF;
@@ -38,15 +37,6 @@ export const Input_tipo = styled.TextInput`
 
 `;
 
-export const Input_status = styled.TextInput`
-    height: 50px;
-    width: 50%;
-    background-color: #FFF;
-    font-size: 17px;
-    padding: 0 5px;
-    margin-bottom: 14px;
-    border-radius: 4px;
-`;
 
 export const Input_Data = styled.TextInput`
     margin-left: 8px;
