@@ -7,8 +7,7 @@ export const Background = styled.View`
 
 export const ConteinerInput = styled.View`
     margin-top: 10px;
-    width: 90%;
-    
+    width: 90%;   
     align-items: center;
     flex-direction: row;
     height: 45px;

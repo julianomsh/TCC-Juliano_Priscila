@@ -12,7 +12,7 @@ import {
 
 } from './styles';
 
-import { SafeAreaView, TouchableWithoutFeedback, Keyboard, Alert, DatePickerIOS } from 'react-native';
+import { SafeAreaView, TouchableWithoutFeedback, Keyboard, Alert, Text } from 'react-native';
 //Keyboard.dismiss() - esconder o teclado quando clicar fora 
 
 import Header from '../../components/Header';
@@ -21,7 +21,9 @@ import api from '../../services/api';
 import { format } from 'date-fns';
 import { useNavigation } from "@react-navigation/native";
 import { TextInputMask } from 'react-native-masked-text';
-import SelectDropdown from 'react-native-select-dropdown'
+import SelectDropdown from 'react-native-select-dropdown';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { Ionicons } from '@expo/vector-icons'
 
 export default function New() {
     const navigation = useNavigation();
@@ -33,11 +35,14 @@ export default function New() {
     const [valueDate, setValuedate] = useState('');
     const [valueObservation, setValueObservation] = useState('');
     const [type, setType] = useState('receita');
+    const tipo = ["Fixa", "Variavel"]
+
+    const [showDatePicker, setShowDatePicker] = useState(false);
 
     function handleSubmit() {
         Keyboard.dismiss();
 
-        if (isNaN(parseFloat(valueInput)) || type === null  || valueDate == '') {
+        if (isNaN(parseFloat(valueInput)) || type === null || valueDate == '') {
             alert('Preencha todos os campos!')
             return;
         }
@@ -83,6 +88,8 @@ export default function New() {
         navigation.navigate('Home')
     }
 
+
+
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <Background>
@@ -111,22 +118,58 @@ export default function New() {
                                 setValueInput(Number(text))
                             }}
                         />
-                        <Input_Data
-                            placeholder="DD/MM/AAAA"
-                            value={valueDate}
-                            onChangeText={(text) => setValuedate(text)}
-                        />
+
+                        {Platform.OS === 'ios' && (
+                            <>
+                                <DateTimePicker style={{ height: 50, width: '50%', marginBottom: 14, borderRadius: 4, paddingLeft: 10, fontSize: 20, marginLeft: 4 }}
+                                    value={valueDate || new Date()}
+                                    mode="date"
+                                    display="calendar"
+                                    locale="pt"
+                                    dateFormat="day month year"
+                                    onChange={(event, date) => {
+                                        setShowDatePicker(false);
+                                        if (date) {
+                                            setValuedate(date);
+                                        }
+                                    }}
+                                />
+
+                            </>
+                        )}
+
+
+
+
+
+
                     </ConteinerInput>
 
                     <ConteinerInput>
 
-                        <Input_tipo
-                            placeholder="Fixa/Variavel"
-                            value={valueAccount_type}
-                            onChangeText={(text) => setValueAccount_type(text)}
+                        <SelectDropdown 
+                            data={tipo}
+                            onSelect={(selectedItem, index) => setValueAccount_type(selectedItem)}
+                            buttonTextAfterSelection={(selectedItem, index) => selectedItem}
+                            rowTextForSelection={(item, index) => item}
+                            defaultValueByIndex={0} // Set the default value (index) here
+                            buttonStyle={{ height: 50, width: '50%', backgroundColor: '#FFF', marginBottom: 14, borderRadius: 4, paddingLeft: 10, fontSize: 17, flexDirection: 'row', alignItems: 'center' }}
+                            dropdownStyle={{ height: 'auto' }} // Adjust dropdown style as needed
+                            renderCustomizedButtonChild={(selectedItem, index) => (
+                                <>
+                                    <Text style={{ fontSize:17, color: '#000000',flexDirection:"row", marginRight:20}}>
+                                        {valueAccount_type ? valueAccount_type : 'Tipo de conta'}
+                                           <Ionicons name="chevron-down" size={20} color="#555" style={{ marginLeft: 30 ,flexDirection:"row" }} />
+                                    </Text>
+                                
+                                   
+                                </>
+                            )}
                         />
 
                     </ConteinerInput>
+
+
 
                     <InputObservacao
                         placeholder="Observacao / Codigo de barras"
@@ -147,6 +190,6 @@ export default function New() {
 
 
             </Background>
-        </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback >
     )
 }
